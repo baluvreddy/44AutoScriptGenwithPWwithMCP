@@ -1,0 +1,22 @@
+{
+  "name": "pw_fastapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate_and_runallnonframework.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.55.0",
+    "axios": "^1.12.2"
+  },
+  "devDependencies": {
+    "@playwright/mcp": "^0.0.39"
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 Excel to Playwright Test Automation Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-tFvPGcZuymKdMJiQAVxd2ausc0Bj7W.png" alt="Logo" class="logo">
+
+        <div class="sidebar">
+            <h3>Navigation</h3>
+            <select id="pageSelect" onchange="navigatePage()">
+                <option value="home">Home</option>
+                <option value="codeComparison">Code Comp.</option>
+                <option value="errorLogs">Error Logs</option>
+            </select>
+            <h3>Settings</h3>
+            <input type="password" id="apiKey" placeholder="Gemini API Key">
+        </div>
+
+        <div class="page" id="homePage">
+            <div class="section">
+                <h2>Upload Excel File</h2>
+                <input type="file" id="excelFile" accept=".xlsx">
+                <button onclick="uploadExcel()">Parse Excel to JSON</button>
+                <button id="downloadJsonBtn" disabled onclick="downloadJson()">📥 Download JSON</button>
+                <div id="excelStatus"></div>
+                <select id="jsonPreview" onchange="displayJsonContent()"></select>
+                <pre id="jsonContent" style="display: none;"></pre>
+            </div>
+
+            <div class="section run-tests-section">
+                <h2>Run Tests</h2>
+                <div class="button-group">
+                    <button id="runTestsBtn" disabled onclick="runTests()">Generate and Run Playwright Tests</button>
+                    <button id="stopTestsBtn" disabled onclick="stopTests()">Stop Test Execution</button>
+                </div>
+                <div id="testStatus" class="status-message"></div>
+                <div id="progressBar"><div id="progress"></div></div>
+                
+                <!-- Added real-time statistics display -->
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Tests:</span>
+                        <span id="totalTests" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Passed:</span>
+                        <span id="passedTests" class="stat-value stat-passed">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Failed:</span>
+                        <span id="failedTests" class="stat-value stat-failed">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">In Progress:</span>
+                        <span id="inProgressTests" class="stat-value stat-progress">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Self-Healing:</span>
+                        <span id="healingTests" class="stat-value stat-healing">0</span>
+                    </div>
+                </div>
+                
+                <div id="statusTableContainer"></div>
+            </div>
+        </div>
+
+        <div class="page" id="codeComparisonPage" style="display: none;">
+            <div class="section">
+                <h2>🔍 Code Comparison Dashboard</h2>
+                <select id="testCaseSelect" onchange="loadCodeComparison()"></select>
+                <div id="codeComparison"></div>
+            </div>
+        </div>
+
+        <!-- Added new error logs page -->
+        <div class="page" id="errorLogsPage" style="display: none;">
+            <div class="section">
+                <h2>🚨 Error Logs Dashboard</h2>
+                <div class="button-group">
+                    <button onclick="loadErrorLogs()">Refresh Error Logs</button>
+                    <button onclick="downloadErrorLogs()" class="download-error-logs-btn">📥 Download Error Logs</button>
+                </div>
+                <div id="errorLogsContainer"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/scripts.js"></script>
+</body>
+</html>
