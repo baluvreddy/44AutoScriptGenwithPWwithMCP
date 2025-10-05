@@ -1,204 +1,124 @@
 [
     {
-        "TestCaseID": "TC_SD_001",
-        "Title": "/ → Login Page",
-        "Description": "Login with valid credentials",
-        "Prerequisite": "Browser is open",
+        "TestCaseID": "TC001",
+        "Title": "",
+        "Description": "Verify a user with valid credentials can log in successfully.",
+        "Prerequisite": "User should exist in the system.",
         "Steps": [
             {
                 "StepNo": 1,
-                "Action": "Navigate to SauceDemo login page",
-                "ExpectedResult": "https://www.saucedemo.com/",
+                "Action": "Given the user is on the OrangeHRM login page",
+                "ExpectedResult": "",
                 "TestData": []
             },
             {
                 "StepNo": 2,
-                "Action": "Enter valid username",
-                "ExpectedResult": "Username field accepts input",
+                "Action": "When the user enters the username",
+                "ExpectedResult": "",
                 "TestData": []
             },
             {
                 "StepNo": 3,
-                "Action": "Enter valid password",
-                "ExpectedResult": "Password field accepts input",
+                "Action": "And the user enters the password",
+                "ExpectedResult": "",
                 "TestData": []
             },
             {
                 "StepNo": 4,
-                "Action": "Click \"Login\" button",
-                "ExpectedResult": "https://www.saucedemo.com/inventory.html",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: login with valid credentials.",
-        "TestData": [
-            "https://www.saucedemo.com/",
-            "standard_user",
-            "secret_sauce"
-        ]
-    },
-    {
-        "TestCaseID": "TC_SD_002",
-        "Title": "/inventory.html",
-        "Description": "Add item to cart from inventory page",
-        "Prerequisite": "User is logged in and on inventory page",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Locate product \"Sauce Labs Backpack\"",
-                "ExpectedResult": "Add to cart button is visible",
-                "TestData": []
-            },
-            {
-                "StepNo": 2,
-                "Action": "Click \"Add to cart\" button",
-                "ExpectedResult": "The is a number of cart symbol on top right",
-                "TestData": []
-            },
-            {
-                "StepNo": 3,
-                "Action": "Click cart icon in top-right",
-                "ExpectedResult": "https://www.saucedemo.com/cart.html",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: add item to cart from inventory page."
-    },
-    {
-        "TestCaseID": "TC_SD_003",
-        "Title": "/cart.html",
-        "Description": "Remove item from cart",
-        "Prerequisite": "User Has to be logged in and the Item is added to cart",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Locate item \"Sauce Labs Backpack\" in cart",
-                "ExpectedResult": "The item container has a \"remove\" button in it",
-                "TestData": []
-            },
-            {
-                "StepNo": 2,
-                "Action": "Click \"Remove\" button",
-                "ExpectedResult": "The item container has a \"Add to cart\" button in it",
-                "TestData": []
-            },
-            {
-                "StepNo": 3,
-                "Action": "Verify cart is empty",
-                "ExpectedResult": "There is no number on the cart symbol",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: remove item from cart."
-    },
-    {
-        "TestCaseID": "TC_SD_004",
-        "Title": "/inventory.html",
-        "Description": "Complete checkout with valid details",
-        "Prerequisite": "Item is in cart",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Navigate to login page",
-                "ExpectedResult": "https://www.saucedemo.com/",
-                "TestData": []
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter username",
-                "ExpectedResult": "Field accepts input",
-                "TestData": []
-            },
-            {
-                "StepNo": 3,
-                "Action": "Enter password",
-                "ExpectedResult": "Field accepts input",
-                "TestData": []
-            },
-            {
-                "StepNo": 4,
-                "Action": "Click \"Login\"",
-                "ExpectedResult": "redirected to https://www.saucedemo.com/inventory.html",
+                "Action": "And clicks the login button",
+                "ExpectedResult": "",
                 "TestData": []
             },
             {
                 "StepNo": 5,
-                "Action": "Locate item \"Sauce Labs Backpack\" in cart",
-                "ExpectedResult": "Button changes to \"Remove\"",
-                "TestData": []
-            },
-            {
-                "StepNo": 6,
-                "Action": "Click Shopping cart icon",
-                "ExpectedResult": "Redirects to /cart.html; item is listed",
-                "TestData": []
-            },
-            {
-                "StepNo": 7,
-                "Action": "Click \"Checkout\"",
-                "ExpectedResult": "Redirects to /checkout-step-one.html",
-                "TestData": []
-            },
-            {
-                "StepNo": 8,
-                "Action": "Enter First Name",
-                "ExpectedResult": "Field accepts input",
-                "TestData": []
-            },
-            {
-                "StepNo": 9,
-                "Action": "Enter Last Name",
-                "ExpectedResult": "Field accepts input",
-                "TestData": []
-            },
-            {
-                "StepNo": 10,
-                "Action": "Enter Postal Code",
-                "ExpectedResult": "Field accepts input",
-                "TestData": []
-            },
-            {
-                "StepNo": 11,
-                "Action": "Click \"Continue\"",
-                "ExpectedResult": "Redirects to /checkout-step-two.html; order summary is visible",
-                "TestData": []
-            },
-            {
-                "StepNo": 12,
-                "Action": "Click \"Finish\"",
-                "ExpectedResult": "Redirects to /checkout-complete.html; message \"Thank you for your order!\" appears",
+                "Action": "Then the user should be redirected to the dashboard",
+                "ExpectedResult": "",
                 "TestData": []
             }
         ],
-        "Summary": "This test case verifies: complete checkout with valid details.",
+        "Summary": "This test case verifies: verify a user with valid credentials can log in successfully..",
         "TestData": [
-            "https://www.saucedemo.com/",
-            "#user-name → problem_user",
-            "#password → secret_sauce",
-            "input[data-test=\"firstName\"] → Ravi",
-            "input[data-test=\"lastName\"] → Kumar",
-            "input[data-test=\"postalCode\"] → 500001"
+            "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+            "Admin",
+            "admin123"
         ]
     },
     {
-        "TestCaseID": "TC_SD_005",
-        "Title": "/inventory.html",
-        "Description": "Logout from application",
-        "Prerequisite": "User is logged in and on inventory page",
+        "TestCaseID": "TC002",
+        "Title": "",
+        "Description": "Verify the system shows an error for invalid login credentials.",
+        "Prerequisite": "User should exist in the system.",
         "Steps": [
             {
                 "StepNo": 1,
-                "Action": "Click menu icon (≡) in top-left",
-                "ExpectedResult": "Sidebar menu opens with navigation options",
+                "Action": "Given the user is on the OrangeHRM login page",
+                "ExpectedResult": "",
                 "TestData": []
             },
             {
                 "StepNo": 2,
-                "Action": "Click \"Logout\" option",
-                "ExpectedResult": "Redirects to /; login page is displayed",
+                "Action": "When the user enters an invalid username",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 3,
+                "Action": "And clicks the login button",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 4,
+                "Action": "Then an \"Invalid credentials\" error message should be displayed",
+                "ExpectedResult": "",
                 "TestData": []
             }
         ],
-        "Summary": "This test case verifies: logout from application."
+        "Summary": "This test case verifies: verify the system shows an error for invalid login credentials..",
+        "TestData": [
+            "Admin111111"
+        ]
+    },
+    {
+        "TestCaseID": "TC003",
+        "Title": "",
+        "Description": "Verify a user can initiate the password reset process.",
+        "Prerequisite": "User should exist in the system.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Given the user is on the OrangeHRM login page",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 2,
+                "Action": "When the user clicks on \"Forgot your Password?\"",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 3,
+                "Action": "And enters their username",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 4,
+                "Action": "And clicks the \"Reset Password\" button",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 5,
+                "Action": "Then a password reset link should be sent successfully",
+                "ExpectedResult": "",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: verify a user can initiate the password reset process..",
+        "TestData": [
+            "Admin"
+        ]
     }
 ]

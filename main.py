@@ -12,6 +12,7 @@ from utils.excel_parser import parse_excel
 from utils.test_runner import run_tests, stop_tests
 from typing import Dict, List
 import hashlib
+import re
 
 app = FastAPI(title="Excel to Playwright Test Automation", description="API for automating Playwright tests from Excel files")
 
@@ -141,9 +142,43 @@ async def upload_excel(file: UploadFile = File(...)):
         with open("testcases.json", "w", encoding="utf-8") as f:
             json.dump(testcases, f, indent=4, ensure_ascii=False)
         
+        folder = "testcases"
+        try:
+            # Ensure folder exists and is clean
+            if os.path.exists(folder):
+                # remove only .json files to avoid deleting other assets by mistake
+                for name in os.listdir(folder):
+                    if name.lower().endswith(".json"):
+                        try:
+                            os.remove(os.path.join(folder, name))
+                        except Exception:
+                            pass
+            else:
+                os.makedirs(folder, exist_ok=True)
+
+            def _sanitize(name: str) -> str:
+                # keep alnum, dash, underscore; replace others with underscore
+                return re.sub(r"[^A-Za-z0-9_-]+", "_", name or "").strip("_") or "testcase"
+
+            files_written = 0
+            for idx, tc in enumerate(testcases):
+                tcid = tc.get("TestCaseID") or tc.get("Test Case ID") or f"testcase_{idx+1}"
+                filename = _sanitize(tcid) + ".json"
+                out_path = os.path.join(folder, filename)
+                with open(out_path, "w", encoding="utf-8") as out:
+                    json.dump(tc, out, indent=4, ensure_ascii=False)
+                files_written += 1
+        except Exception as e:
+            # If folder writing fails, still respond with combined JSON success
+            print(f"Error writing per-testcase JSON files: {e}")
+
         return JSONResponse(content={
             "message": f"Parsed {len(testcases)} test case(s) and saved to testcases.json",
-            "testcases": testcases
+            "testcases": testcases,
+            "per_file_export": {
+                "folder": folder,
+                "files_written": files_written if 'files_written' in locals() else 0
+            }
         })
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error parsing Excel: {str(e)}")
@@ -173,22 +208,36 @@ async def run_tests_endpoint(background_tasks: BackgroundTasks, api_key: str = "
     if os.path.exists("stop.txt"):
         os.remove("stop.txt")
     
-    if api_key:
+    if api_key and api_key.strip():
         try:
+            # Set environment variable for the Node.js process
+            os.environ['GEMINI_API_KEY'] = api_key.strip()
+            
+            # Also update the JavaScript file as backup
             with open("generate_and_runall.js", "r", encoding="utf-8") as f:
                 content = f.read()
-            content = content.replace(
-                r"const GEMINI_API_KEY = '[^']*';",
-                f"const GEMINI_API_KEY = '{api_key}';"
+            
+            # Replace the API key line more reliably
+            content = re.sub(
+                r'const GEMINI_API_KEY = .*?;',
+                f'const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "{api_key.strip()}";',
+                content
             )
+            
             with open("generate_and_runall.js", "w", encoding="utf-8") as f:
                 f.write(content)
+                
+            print(f"API key configured successfully")
         except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Error updating Node.js script: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Error updating API key: {str(e)}")
+    else:
+        # Check if API key is available in environment
+        if not os.environ.get('GEMINI_API_KEY'):
+            raise HTTPException(status_code=400, detail="Gemini API key is required. Please provide a valid API key.")
     
     background_tasks.add_task(run_tests, update_table, update_codes, update_prompts)
     
-    return JSONResponse(content={"message": "Test execution started"})
+    return JSONResponse(content={"message": "Test execution started with configured API key"})
 
 @app.post("/stop-tests/")
 async def stop_tests_endpoint():

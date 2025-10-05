@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "D:\\DELOITTE INDIA\\GenAI_JP\\PW_Fastapi\\playwright.config.js",
-    "rootDir": "D:/DELOITTE INDIA/GenAI_JP/PW_Fastapi/tests",
+    "configFile": "D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\playwright.config.js",
+    "rootDir": "D:/DELOITTE INDIA/GenAI_JPMC/PW_Fastapi/tests",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
@@ -26,7 +26,7 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "D:/DELOITTE INDIA/GenAI_JP/PW_Fastapi/test-results",
+        "outputDir": "D:/DELOITTE INDIA/GenAI_JPMC/PW_Fastapi/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -34,7 +34,7 @@
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "D:/DELOITTE INDIA/GenAI_JP/PW_Fastapi/tests",
+        "testDir": "D:/DELOITTE INDIA/GenAI_JPMC/PW_Fastapi/tests",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -51,52 +51,83 @@
   },
   "suites": [
     {
-      "title": "TC_SD_005.spec.js",
-      "file": "TC_SD_005.spec.js",
+      "title": "TC003.spec.js",
+      "file": "TC003.spec.js",
       "column": 0,
       "line": 0,
-      "specs": [
+      "specs": [],
+      "suites": [
         {
-          "title": "TC_SD_005 - Logout from application",
-          "ok": true,
-          "tags": [],
-          "tests": [
+          "title": "Password Reset Functionality",
+          "file": "TC003.spec.js",
+          "line": 3,
+          "column": 6,
+          "specs": [
             {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "chromium",
-              "projectName": "chromium",
-              "results": [
+              "title": "TC003: Verify a user can initiate the password reset process",
+              "ok": true,
+              "tags": [],
+              "tests": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 7009,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-09-21T10:52:40.005Z",
+                  "timeout": 30000,
                   "annotations": [],
-                  "attachments": []
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 15049,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Navigate to the OrangeHRM login page",
+                          "duration": 9972
+                        },
+                        {
+                          "title": "Click on the \"Forgot your Password?\" link",
+                          "duration": 1357
+                        },
+                        {
+                          "title": "Enter the username",
+                          "duration": 67
+                        },
+                        {
+                          "title": "Click the \"Reset Password\" button",
+                          "duration": 1203
+                        },
+                        {
+                          "title": "Verify the password reset link was sent successfully",
+                          "duration": 463
+                        }
+                      ],
+                      "startTime": "2025-10-05T06:03:53.673Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
-              "status": "expected"
+              "id": "3a715126101907c7f60e-91c203597d6509f68aa8",
+              "file": "TC003.spec.js",
+              "line": 4,
+              "column": 7
             }
-          ],
-          "id": "3a56a7e2675453f073bf-be9ef07cee08045eb191",
-          "file": "TC_SD_005.spec.js",
-          "line": 3,
-          "column": 1
+          ]
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-21T10:52:39.137Z",
-    "duration": 8668.108,
+    "startTime": "2025-10-05T06:03:51.958Z",
+    "duration": 18164.533,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

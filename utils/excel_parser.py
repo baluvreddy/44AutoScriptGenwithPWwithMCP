@@ -9,8 +9,8 @@ COLUMN_MAP = {
     "Title": ["Feature", "Module Name", "Title", "Module", "Test Name", "Test Title", "Functionality", "Test Module", "Feature Name", "Test Case Name", "Module Title", "Test Function"],
     "Description": ["Test Case Description", "Test Case", "Scenario", "Test Case Title", "Test Objective", "Purpose", "Test Scenario", "Test Goal", "Description", "Test Purpose", "Test Summary", "Objective", "Test Details"],
     "Prerequisite": ["Pre-requisites", "Precondition", "Pre-conditions", "Requisite", "Pre-Rules", "Setup", "Requirements", "Pre-Req", "Conditions", "Pre-Requirement", "Test Setup", "Precondition(s)", "Setup Conditions", "Initial Conditions", "Test Prerequisites"],
-    "TestData": ["Test Data", "Data", "Input", "Inputs", "Test Input", "Data Set", "Input Data", "Test Dataset", "Test Parameters", "Data Inputs"],
-    "StepNo": ["Step No.", "Step Number", "No", "Step ID", "Sequence", "Step", "Sequence No", "Order", "Step Seq", "Test Step No", "Step Order"],
+    "TestData": ["Test Data","argument", "Data", "Input", "Inputs", "Test Input", "Data Set", "Input Data", "Test Dataset", "Test Parameters", "Data Inputs"],
+    "StepNo": ["Step No.", "Step Num  ber", "No", "Step ID", "Sequence", "Step", "Sequence No", "Order", "Step Seq", "Test Step No", "Step Order"],
     "Action": ["Test Step", "Step", "Action", "Test Steps", "Test Action", "Procedure", "Test Procedure", "Step Description", "Action Step", "Test Activity", "Step Action", "Execution Step"],
     "ExpectedResult": ["Expected Result", "Result", "Expected", "Expected Outcome", "Outcome", "Verification", "Expected Behavior", "Test Result", "Expected Output", "Test Outcome", "Verification Result", "Expected Response"]
 }

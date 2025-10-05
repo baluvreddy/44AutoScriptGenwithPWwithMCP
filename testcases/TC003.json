@@ -1,0 +1,42 @@
+{
+    "TestCaseID": "TC003",
+    "Title": "",
+    "Description": "Verify a user can initiate the password reset process.",
+    "Prerequisite": "User should exist in the system.",
+    "Steps": [
+        {
+            "StepNo": 1,
+            "Action": "Given the user is on the OrangeHRM login page",
+            "ExpectedResult": "",
+            "TestData": []
+        },
+        {
+            "StepNo": 2,
+            "Action": "When the user clicks on \"Forgot your Password?\"",
+            "ExpectedResult": "",
+            "TestData": []
+        },
+        {
+            "StepNo": 3,
+            "Action": "And enters their username",
+            "ExpectedResult": "",
+            "TestData": []
+        },
+        {
+            "StepNo": 4,
+            "Action": "And clicks the \"Reset Password\" button",
+            "ExpectedResult": "",
+            "TestData": []
+        },
+        {
+            "StepNo": 5,
+            "Action": "Then a password reset link should be sent successfully",
+            "ExpectedResult": "",
+            "TestData": []
+        }
+    ],
+    "Summary": "This test case verifies: verify a user can initiate the password reset process..",
+    "TestData": [
+        "Admin"
+    ]
+}

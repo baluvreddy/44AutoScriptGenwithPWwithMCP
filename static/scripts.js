@@ -24,7 +24,7 @@ async function uploadExcel() {
   }
   const formData = new FormData()
   formData.append("file", fileInput.files[0])
-  document.getElementById("excelStatus").innerHTML = "Parsing Excel..."
+  document.getElementById("excelStatus").innerHTML = '<span class="circle-loading rotating">⟳</span> Parsing Excel...'
   try {
     const response = await fetch("/upload-excel/", {
       method: "POST",
@@ -34,22 +34,12 @@ async function uploadExcel() {
     console.log("Upload response:", result) // Debug log
     if (response.ok) {
       document.getElementById("excelStatus").innerHTML = `<span style="color: #00ff7f;">${result.message}</span>`
-      const select = document.getElementById("jsonPreview")
-      const fullJson = JSON.stringify(result.testcases, null, 2) // Pretty JSON
+      const jsonContainer = document.getElementById("jsonContainer")
+      const jsonContent = document.getElementById("jsonContent")
+      const fullJson = JSON.stringify(result.testcases, null, 2)
 
-      // Reset old options
-      select.innerHTML = ""
-
-      // Add option safely
-      const option = document.createElement("option")
-      option.value = "all"
-      option.textContent = "View Entire testcases.json"
-      option.setAttribute("data-json", fullJson)
-      select.appendChild(option)
-
-      // Hide JSON content by default
-      document.getElementById("jsonContent").style.display = "none"
-      document.getElementById("jsonContent").textContent = ""
+      jsonContent.textContent = fullJson
+      jsonContainer.style.display = "block"
 
       document.getElementById("downloadJsonBtn").disabled = false
       document.getElementById("runTestsBtn").disabled = false
@@ -65,26 +55,14 @@ async function uploadExcel() {
   }
 }
 
-function displayJsonContent() {
-  const select = document.getElementById("jsonPreview")
-  const jsonContent = document.getElementById("jsonContent")
-  const selectedOption = select.options[select.selectedIndex]
-
-  if (selectedOption && selectedOption.dataset.json) {
-    jsonContent.style.display = "block"
-    jsonContent.textContent = selectedOption.dataset.json
-  } else {
-    jsonContent.style.display = "none"
-  }
-}
-
 async function downloadJson() {
   window.location.href = "/download-json/"
 }
 
 async function runTests() {
   const apiKey = document.getElementById("apiKey").value
-  document.getElementById("testStatus").innerHTML = "Starting test execution..."
+  document.getElementById("testStatus").innerHTML =
+    '<span class="circle-loading rotating">⟳</span> Starting test execution...'
   document.getElementById("runTestsBtn").disabled = true
   document.getElementById("stopTestsBtn").disabled = false
   document.getElementById("progress").style.width = "0%"
@@ -95,7 +73,8 @@ async function runTests() {
       body: JSON.stringify({ api_key: apiKey }),
     })
     const result = await response.json()
-    document.getElementById("testStatus").innerHTML = `<span style="color: #00ff7f;">${result.message}</span>`
+    document.getElementById("testStatus").innerHTML =
+      `<span class="circle-loading rotating">⟳</span> <span style="color: #00ff7f;">${result.message}</span>`
     pollTestStatuses()
   } catch (error) {
     document.getElementById("testStatus").innerHTML = `<span style="color: #ff4d4d;">Error: ${error.message}</span>`
@@ -105,7 +84,8 @@ async function runTests() {
 }
 
 async function stopTests() {
-  document.getElementById("testStatus").innerHTML = "Stopping test execution..."
+  document.getElementById("testStatus").innerHTML =
+    '<span class="circle-loading rotating">⟳</span> Stopping test execution...'
   document.getElementById("stopTestsBtn").disabled = true
   try {
     const response = await fetch("/stop-tests/", { method: "POST" })
@@ -129,7 +109,6 @@ async function pollTestStatuses() {
       const currentStatus = await currentStatusResponse.json()
 
       updateStatistics(statuses)
-
       updateLiveStatus(currentStatus)
 
       let tableHtml = `
@@ -157,8 +136,13 @@ async function pollTestStatuses() {
           row.Status === "Local Fix Applied" ||
           row.Status === "AI Fix Applied"
         ) {
+          let loadingIcon = '<span class="circle-loading rotating">⟳</span>'
+          if (row.Status === "Generating Script") loadingIcon = '<span class="circle-loading fast rotating">⚙</span>'
+
+          statusText = `${loadingIcon} ${row.Status}`
+
           if (row.Attempts > 0) {
-            statusText = `${row.Status} - Attempt ${row.Attempts}`
+            statusText += ` - Attempt ${row.Attempts}`
           }
           if (row["Healing Type"] && row["Healing Type"] !== "initial") {
             statusText += ` (${row["Healing Type"]})`
@@ -180,7 +164,7 @@ async function pollTestStatuses() {
                         <td>${failureReason}</td>
                         <td>${row.Timestamp}</td>
                         <td>
-                            <button onclick="viewTestCode('${row["Test Case ID"]}')\" class="action-btn">📝 View Code</button>
+                            <button onclick="viewTestCode('${row["Test Case ID"]}')" class="action-btn">📝 View Code</button>
                         </td>
                     </tr>
                 `
@@ -219,7 +203,7 @@ async function pollTestStatuses() {
           ].includes(s.Status),
         )
       ) {
-        setTimeout(updateTable, 250)
+        setTimeout(updateTable, 50) // Faster polling for more responsive updates
       } else {
         document.getElementById("runTestsBtn").disabled = false
         document.getElementById("stopTestsBtn").disabled = true
@@ -241,30 +225,31 @@ function updateLiveStatus(currentStatus) {
 
   for (const [testCaseId, status] of Object.entries(currentStatus)) {
     if (status.includes("Running") || status.includes("Generating") || status.includes("Self-healing")) {
-      // Format: "Initial TC_001 is running" or "Gemini TC_002 is healing"
       let message = ""
+      const loadingIcon = '<span class="circle-loading rotating">⟳</span>' // More visible rotating symbol
+
       if (
         status.includes("initial") ||
         (!status.includes("local") && !status.includes("gemini") && !status.includes("advanced"))
       ) {
-        message = `Initial ${testCaseId} is running`
+        message = `${loadingIcon} ${testCaseId} is running on attempt 1`
       } else if (status.includes("local")) {
-        message = `Local ${testCaseId} is healing`
+        message = `${loadingIcon} ${testCaseId} is healing (Local) on attempt 2`
       } else if (status.includes("gemini")) {
-        message = `Gemini ${testCaseId} is healing`
+        message = `${loadingIcon} ${testCaseId} is healing (Gemini AI) on attempt 3`
       } else if (status.includes("advanced")) {
-        message = `Advanced ${testCaseId} is healing`
+        message = `${loadingIcon} ${testCaseId} is healing (Advanced) on attempt 4`
       } else if (status.includes("Generating")) {
-        message = `Generating script for ${testCaseId}`
+        message = `<span class="circle-loading fast rotating">⚙</span> Generating script for ${testCaseId}`
       } else {
-        message = `${testCaseId} is ${status.toLowerCase()}`
+        message = `${loadingIcon} ${testCaseId} is ${status.toLowerCase()}`
       }
       statusMessages.push(message)
     }
   }
 
   if (statusMessages.length > 0) {
-    statusElement.innerHTML = `<span style="color: #00ff7f;">${statusMessages.join(" | ")}</span>`
+    statusElement.innerHTML = `<span style="color: #00ff7f;" class="live-status">${statusMessages.join(" | ")}</span>`
   } else if (Object.keys(currentStatus).length > 0) {
     statusElement.innerHTML = '<span style="color: #00ff7f;">All tests processed.</span>'
   }
@@ -287,11 +272,9 @@ function updateStatistics(statuses) {
 }
 
 async function viewTestCode(testCaseId) {
-  // Switch to code comparison page and load the specific test case
   document.getElementById("pageSelect").value = "codeComparison"
   navigatePage()
 
-  // Wait a bit for the page to load, then select the test case
   setTimeout(async () => {
     await loadTestCases()
     document.getElementById("testCaseSelect").value = testCaseId
@@ -321,13 +304,27 @@ async function loadCodeComparison() {
     return
   }
   try {
-    const [codesRes, promptRes] = await Promise.all([
+    const [codesRes, promptRes, statusRes] = await Promise.all([
       fetch(`/test-codes/${testCaseId}`),
       fetch(`/healing-prompt/${testCaseId}`),
+      fetch(`/test-statuses/`),
     ])
     const codes = await codesRes.json()
     const prompt = await promptRes.json()
+    const statuses = await statusRes.json()
+
+    const testStatus = statuses.find((s) => s["Test Case ID"] === testCaseId)
+    const successfulHealingType = testStatus?.["Healing Type"] || "initial"
+    const testPassed = testStatus?.Status === "Passed"
+
     comparisonDiv.innerHTML = `<h3>Test Case ID: ${testCaseId}</h3>`
+
+    if (testPassed) {
+      comparisonDiv.innerHTML += `<div class="test-result-success">✅ Test PASSED on ${successfulHealingType === "initial" ? "initial attempt" : successfulHealingType + " healing attempt"}</div>`
+    } else if (testStatus?.Status === "Failed") {
+      comparisonDiv.innerHTML += `<div class="test-result-failed">❌ Test FAILED after all attempts</div>`
+    }
+
     if (prompt.prompt) {
       comparisonDiv.innerHTML += `
                 <h4>Full Healing Prompt</h4>
@@ -338,9 +335,27 @@ async function loadCodeComparison() {
     ;["initial", "local", "gemini", "advanced"].forEach((version) => {
       const versionName =
         version === "advanced" ? "Advanced Self-Healing" : version.charAt(0).toUpperCase() + version.slice(1)
+
+      let versionHeader = `<h4>${versionName} Version`
+
+      if (
+        testPassed &&
+        ((version === "initial" && successfulHealingType === "initial") || version === successfulHealingType)
+      ) {
+        versionHeader += ` <span class="success-indicator">✅ PASSED</span>`
+      }
+      versionHeader += `</h4>`
+
+      const codeContent = codes[version] || `No ${versionName.toLowerCase()} version generated.`
+
+      const isSuccessfulVersion =
+        testPassed &&
+        ((version === "initial" && successfulHealingType === "initial") || version === successfulHealingType)
+      const codeClass = isSuccessfulVersion ? "code-successful" : "code-default"
+
       comparisonDiv.innerHTML += `
-                <h4>${versionName} Version</h4>
-                <pre>${codes[version] || `No ${versionName.toLowerCase()} version generated.`}</pre>
+                ${versionHeader}
+                <pre class="${codeClass}">${codeContent}</pre>
             `
     })
   } catch (error) {
@@ -409,7 +424,6 @@ async function loadInitialStatistics() {
     const statuses = await response.json()
     updateStatistics(statuses)
 
-    // Also update testCount for progress calculation
     if (statuses.length > 0) {
       testCount = statuses.length
     }
@@ -418,7 +432,6 @@ async function loadInitialStatistics() {
   }
 }
 
-// Call loadInitialStatistics on page load
 document.addEventListener("DOMContentLoaded", () => {
   loadInitialStatistics()
 })

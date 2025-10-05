@@ -28,8 +28,11 @@
                 <button onclick="uploadExcel()">Parse Excel to JSON</button>
                 <button id="downloadJsonBtn" disabled onclick="downloadJson()">📥 Download JSON</button>
                 <div id="excelStatus"></div>
-                <select id="jsonPreview" onchange="displayJsonContent()"></select>
-                <pre id="jsonContent" style="display: none;"></pre>
+                <!-- Replaced dropdown with scrollable JSON container -->
+                <div id="jsonContainer" class="json-container" style="display: none;">
+                    <h3>Generated JSON Content:</h3>
+                    <pre id="jsonContent"></pre>
+                </div>
             </div>
 
             <div class="section run-tests-section">
