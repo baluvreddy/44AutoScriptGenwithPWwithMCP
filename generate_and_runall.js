@@ -4,7 +4,7 @@ const path = require("path")
 const { execSync } = require("child_process")
 
 // Configuration
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || ""
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyBfVM1XJCjpI4WuGxFVuDhW2pxCAv5C7g0"
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent"
 const TESTS_DIR = path.join(__dirname, "tests")
 const TESTCASES_FOLDER = path.join(__dirname, "testcases")

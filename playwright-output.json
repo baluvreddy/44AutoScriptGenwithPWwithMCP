@@ -51,83 +51,52 @@
   },
   "suites": [
     {
-      "title": "TC003.spec.js",
-      "file": "TC003.spec.js",
+      "title": "TC_LG_013.spec.js",
+      "file": "TC_LG_013.spec.js",
       "column": 0,
       "line": 0,
-      "specs": [],
-      "suites": [
+      "specs": [
         {
-          "title": "Password Reset Functionality",
-          "file": "TC003.spec.js",
-          "line": 3,
-          "column": 6,
-          "specs": [
+          "title": "TC_LG_013: Prevent access to authenticated pages after logout",
+          "ok": true,
+          "tags": [],
+          "tests": [
             {
-              "title": "TC003: Verify a user can initiate the password reset process",
-              "ok": true,
-              "tags": [],
-              "tests": [
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
                 {
-                  "timeout": 30000,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12489,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-06T09:54:22.765Z",
                   "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 15049,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "steps": [
-                        {
-                          "title": "Navigate to the OrangeHRM login page",
-                          "duration": 9972
-                        },
-                        {
-                          "title": "Click on the \"Forgot your Password?\" link",
-                          "duration": 1357
-                        },
-                        {
-                          "title": "Enter the username",
-                          "duration": 67
-                        },
-                        {
-                          "title": "Click the \"Reset Password\" button",
-                          "duration": 1203
-                        },
-                        {
-                          "title": "Verify the password reset link was sent successfully",
-                          "duration": 463
-                        }
-                      ],
-                      "startTime": "2025-10-05T06:03:53.673Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "attachments": []
                 }
               ],
-              "id": "3a715126101907c7f60e-91c203597d6509f68aa8",
-              "file": "TC003.spec.js",
-              "line": 4,
-              "column": 7
+              "status": "expected"
             }
-          ]
+          ],
+          "id": "0fecca931248943dd4c8-0a6234487226bd880a04",
+          "file": "TC_LG_013.spec.js",
+          "line": 3,
+          "column": 5
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-10-05T06:03:51.958Z",
-    "duration": 18164.533,
+    "startTime": "2025-10-06T09:54:21.622Z",
+    "duration": 14539.646,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

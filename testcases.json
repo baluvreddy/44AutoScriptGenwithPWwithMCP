@@ -1,124 +1,439 @@
 [
     {
-        "TestCaseID": "TC001",
+        "TestCaseID": "TC_LG_001",
         "Title": "",
-        "Description": "Verify a user with valid credentials can log in successfully.",
-        "Prerequisite": "User should exist in the system.",
+        "Description": "TC_LG_001",
+        "Prerequisite": "Launch the application URL.",
         "Steps": [
             {
                 "StepNo": 1,
-                "Action": "Given the user is on the OrangeHRM login page",
-                "ExpectedResult": "",
-                "TestData": []
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
             },
             {
                 "StepNo": 2,
-                "Action": "When the user enters the username",
-                "ExpectedResult": "",
-                "TestData": []
+                "Action": "Enter a valid username.",
+                "ExpectedResult": "The username 'Admin' is entered in the field.",
+                "TestData": [
+                    "username: Admin"
+                ]
             },
             {
                 "StepNo": 3,
-                "Action": "And the user enters the password",
-                "ExpectedResult": "",
-                "TestData": []
+                "Action": "Enter a valid password.",
+                "ExpectedResult": "The password characters are masked.",
+                "TestData": [
+                    "password: admin123"
+                ]
             },
             {
                 "StepNo": 4,
-                "Action": "And clicks the login button",
-                "ExpectedResult": "",
-                "TestData": []
-            },
-            {
-                "StepNo": 5,
-                "Action": "Then the user should be redirected to the dashboard",
-                "ExpectedResult": "",
+                "Action": "Click on the \"Login\" button.",
+                "ExpectedResult": "The user is successfully authenticated and redirected to the main Dashboard page.",
                 "TestData": []
             }
         ],
-        "Summary": "This test case verifies: verify a user with valid credentials can log in successfully..",
-        "TestData": [
-            "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
-            "Admin",
-            "admin123"
-        ]
+        "Summary": "This test case verifies: tc_lg_001."
     },
     {
-        "TestCaseID": "TC002",
+        "TestCaseID": "TC_LG_002",
         "Title": "",
-        "Description": "Verify the system shows an error for invalid login credentials.",
-        "Prerequisite": "User should exist in the system.",
+        "Description": "TC_LG_002",
+        "Prerequisite": "Launch the application URL.",
         "Steps": [
             {
                 "StepNo": 1,
-                "Action": "Given the user is on the OrangeHRM login page",
-                "ExpectedResult": "",
-                "TestData": []
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
             },
             {
                 "StepNo": 2,
-                "Action": "When the user enters an invalid username",
-                "ExpectedResult": "",
-                "TestData": []
+                "Action": "Enter a valid username.",
+                "ExpectedResult": "The username 'Admin' is entered in the field.",
+                "TestData": [
+                    "username: Admin"
+                ]
             },
             {
                 "StepNo": 3,
-                "Action": "And clicks the login button",
-                "ExpectedResult": "",
-                "TestData": []
+                "Action": "Enter an invalid password.",
+                "ExpectedResult": "The password characters are masked.",
+                "TestData": [
+                    "password: invalidpass"
+                ]
             },
             {
                 "StepNo": 4,
-                "Action": "Then an \"Invalid credentials\" error message should be displayed",
-                "ExpectedResult": "",
+                "Action": "Click on the \"Login\" button.",
+                "ExpectedResult": "An error message \"Invalid credentials\" is displayed.",
                 "TestData": []
             }
         ],
-        "Summary": "This test case verifies: verify the system shows an error for invalid login credentials..",
-        "TestData": [
-            "Admin111111"
-        ]
+        "Summary": "This test case verifies: tc_lg_002."
     },
     {
-        "TestCaseID": "TC003",
+        "TestCaseID": "TC_LG_003",
         "Title": "",
-        "Description": "Verify a user can initiate the password reset process.",
-        "Prerequisite": "User should exist in the system.",
+        "Description": "TC_LG_003",
+        "Prerequisite": "Launch the application URL.",
         "Steps": [
             {
                 "StepNo": 1,
-                "Action": "Given the user is on the OrangeHRM login page",
-                "ExpectedResult": "",
-                "TestData": []
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
             },
             {
                 "StepNo": 2,
-                "Action": "When the user clicks on \"Forgot your Password?\"",
-                "ExpectedResult": "",
+                "Action": "Enter an invalid username.",
+                "ExpectedResult": "The username is entered in the field.",
+                "TestData": [
+                    "username: NonExistentUser"
+                ]
+            },
+            {
+                "StepNo": 3,
+                "Action": "Enter a valid password.",
+                "ExpectedResult": "The password characters are masked.",
+                "TestData": [
+                    "password: admin123"
+                ]
+            },
+            {
+                "StepNo": 4,
+                "Action": "Click on the \"Login\" button.",
+                "ExpectedResult": "An error message \"Invalid credentials\" is displayed.",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_003."
+    },
+    {
+        "TestCaseID": "TC_LG_004",
+        "Title": "",
+        "Description": "TC_LG_004",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Click on the \"Login\" button.",
+                "ExpectedResult": "A validation message \"Required\" appears below both the username and password fields.",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_004."
+    },
+    {
+        "TestCaseID": "TC_LG_005",
+        "Title": "",
+        "Description": "TC_LG_005",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Enter a valid username.",
+                "ExpectedResult": "The username 'Admin' is entered in the field.",
+                "TestData": [
+                    "username: Admin"
+                ]
+            },
+            {
+                "StepNo": 3,
+                "Action": "Click on the \"Login\" button.",
+                "ExpectedResult": "A validation message \"Required\" appears below the password field.",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_005."
+    },
+    {
+        "TestCaseID": "TC_LG_006",
+        "Title": "",
+        "Description": "TC_LG_006",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Enter username in a different case.",
+                "ExpectedResult": "The username 'admin' is entered.",
+                "TestData": [
+                    "username: admin"
+                ]
+            },
+            {
+                "StepNo": 3,
+                "Action": "Enter a valid password.",
+                "ExpectedResult": "The password characters are masked.",
+                "TestData": [
+                    "password: admin123"
+                ]
+            },
+            {
+                "StepNo": 4,
+                "Action": "Click on the \"Login\" button.",
+                "ExpectedResult": "An error message \"Invalid credentials\" is displayed.",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_006."
+    },
+    {
+        "TestCaseID": "TC_LG_007",
+        "Title": "",
+        "Description": "TC_LG_007",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Enter a valid username.",
+                "ExpectedResult": "The username 'Admin' is entered.",
+                "TestData": [
+                    "username: Admin"
+                ]
+            },
+            {
+                "StepNo": 3,
+                "Action": "Enter password in a different case.",
+                "ExpectedResult": "The password characters are masked.",
+                "TestData": [
+                    "password: ADMIN123"
+                ]
+            },
+            {
+                "StepNo": 4,
+                "Action": "Click on the \"Login\" button.",
+                "ExpectedResult": "An error message \"Invalid credentials\" is displayed.",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_007."
+    },
+    {
+        "TestCaseID": "TC_LG_008",
+        "Title": "",
+        "Description": "TC_LG_008",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Click on the \"Forgot your password?\" link.",
+                "ExpectedResult": "The user is redirected to the \"Reset Password\" page.",
                 "TestData": []
             },
             {
                 "StepNo": 3,
-                "Action": "And enters their username",
-                "ExpectedResult": "",
-                "TestData": []
-            },
-            {
-                "StepNo": 4,
-                "Action": "And clicks the \"Reset Password\" button",
-                "ExpectedResult": "",
-                "TestData": []
-            },
-            {
-                "StepNo": 5,
-                "Action": "Then a password reset link should be sent successfully",
-                "ExpectedResult": "",
+                "Action": "Verify the presence of the username input field on the new page.",
+                "ExpectedResult": "The \"Reset Password\" page contains a field to enter the username.",
                 "TestData": []
             }
         ],
-        "Summary": "This test case verifies: verify a user can initiate the password reset process..",
+        "Summary": "This test case verifies: tc_lg_008."
+    },
+    {
+        "TestCaseID": "TC_LG_009",
+        "Title": "",
+        "Description": "TC_LG_009",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Inspect the page for all required elements.",
+                "ExpectedResult": "Page contains: Logo, Username field, Password field, Login button, and \"Forgot your password?\" link.",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_009."
+    },
+    {
+        "TestCaseID": "TC_LG_010",
+        "Title": "",
+        "Description": "TC_LG_010",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Enter text into the password field.",
+                "ExpectedResult": "The text entered is obscured by mask characters (e.g., â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢).",
+                "TestData": [
+                    "password: testmasking"
+                ]
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_010."
+    },
+    {
+        "TestCaseID": "TC_LG_011",
+        "Title": "",
+        "Description": "TC_LG_011",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Enter a valid username.",
+                "ExpectedResult": "The username 'Admin' is entered in the field.",
+                "TestData": [
+                    "username: Admin"
+                ]
+            },
+            {
+                "StepNo": 3,
+                "Action": "Enter a valid password.",
+                "ExpectedResult": "The password field is populated.",
+                "TestData": [
+                    "password: admin123"
+                ]
+            },
+            {
+                "StepNo": 4,
+                "Action": "Press the 'Enter' key on the keyboard.",
+                "ExpectedResult": "The user is successfully authenticated and redirected to the main Dashboard page.",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_011."
+    },
+    {
+        "TestCaseID": "TC_LG_012",
+        "Title": "",
+        "Description": "TC_LG_012",
+        "Prerequisite": "Launch the application URL.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Launch the application URL.",
+                "ExpectedResult": "The OrangeHRM login page is displayed.",
+                "TestData": [
+                    "URL"
+                ]
+            },
+            {
+                "StepNo": 2,
+                "Action": "Enter a basic SQL injection string in the username field.",
+                "ExpectedResult": "The string is entered in the field.",
+                "TestData": [
+                    "username: ' OR '1'='1"
+                ]
+            },
+            {
+                "StepNo": 3,
+                "Action": "Enter any password.",
+                "ExpectedResult": "The password characters are masked.",
+                "TestData": [
+                    "password: password"
+                ]
+            },
+            {
+                "StepNo": 4,
+                "Action": "Click on the \"Login\" button.",
+                "ExpectedResult": "Application shows \"Invalid credentials\" error and is not compromised.",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_012."
+    },
+    {
+        "TestCaseID": "TC_LG_013",
+        "Title": "",
+        "Description": "TC_LG_013",
+        "Prerequisite": "Perform a valid login.",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Perform a valid login.",
+                "ExpectedResult": "The user is logged in and on the Dashboard page.",
+                "TestData": []
+            },
+            {
+                "StepNo": 2,
+                "Action": "Log out of the application.",
+                "ExpectedResult": "The user is redirected to the login page.",
+                "TestData": []
+            },
+            {
+                "StepNo": 3,
+                "Action": "Use the browser's back button or manually enter the Dashboard URL.",
+                "ExpectedResult": "The application redirects the user back to the login page.",
+                "TestData": [
+                    "Dashboard URL"
+                ]
+            }
+        ],
+        "Summary": "This test case verifies: tc_lg_013.",
         "TestData": [
-            "Admin"
+            "user: Admin",
+            "pass: admin123"
         ]
     }
 ]
