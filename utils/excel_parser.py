@@ -5,10 +5,10 @@ from collections import OrderedDict
 from difflib import get_close_matches
 
 COLUMN_MAP = {
-    "TestCaseID": ["Test Case ID", "ID", "Case ID", "TestCaseID", "TC ID", "Test ID", "TestCase", "TCID", "Test Case Number", "Test Number", "TestCase No", "TC Number", "Test Identifier", "Case Number"],
-    "Title": ["Feature", "Module Name", "Title", "Module", "Test Name", "Test Title", "Functionality", "Test Module", "Feature Name", "Test Case Name", "Module Title", "Test Function"],
-    "Description": ["Test Case Description", "Test Case", "Scenario", "Test Case Title", "Test Objective", "Purpose", "Test Scenario", "Test Goal", "Description", "Test Purpose", "Test Summary", "Objective", "Test Details"],
-    "Prerequisite": ["Pre-requisites", "Precondition", "Pre-conditions", "Requisite", "Pre-Rules", "Setup", "Requirements", "Pre-Req", "Conditions", "Pre-Requirement", "Test Setup", "Precondition(s)", "Setup Conditions", "Initial Conditions", "Test Prerequisites"],
+    "TestCaseID": ["Test Case ID", "ID", "Case ID","Scenario ID", "TestCaseID", "TC ID", "Test ID", "TestCase", "TCID", "Test Case Number", "Test Number", "TestCase No", "TC Number", "Test Identifier", "Case Number"],
+    "Title": ["Feature", "Module Name", "Title", "Module","Scenario Name", "Test Name", "Test Title", "Functionality", "Test Module", "Feature Name", "Test Case Name", "Module Title", "Test Function"],
+    "Description": ["Test Case Description","Scenario Description", "Test Case", "Scenario", "Test Case Title", "Test Objective", "Purpose", "Test Scenario", "Test Goal", "Description", "Test Purpose", "Test Summary", "Objective", "Test Details"],
+    "Prerequisite": ["Pre-requisites", "Precondition","Prerequisite ID", "Pre-conditions", "Requisite", "Pre-Rules", "Setup", "Requirements", "Pre-Req", "Conditions", "Pre-Requirement", "Test Setup", "Precondition(s)", "Setup Conditions", "Initial Conditions", "Test Prerequisites"],
     "TestData": ["Test Data","argument", "Data", "Input", "Inputs", "Test Input", "Data Set", "Input Data", "Test Dataset", "Test Parameters", "Data Inputs"],
     "StepNo": ["Step No.", "Step Num  ber", "No", "Step ID", "Sequence", "Step", "Sequence No", "Order", "Step Seq", "Test Step No", "Step Order"],
     "Action": ["Test Step", "Step", "Action", "Test Steps", "Test Action", "Procedure", "Test Procedure", "Step Description", "Action Step", "Test Activity", "Step Action", "Execution Step"],

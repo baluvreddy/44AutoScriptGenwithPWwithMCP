@@ -4,7 +4,7 @@ const path = require("path")
 const { execSync } = require("child_process")
 
 // Configuration
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyBfVM1XJCjpI4WuGxFVuDhW2pxCAv5C7g0"
+const GEMINI_API_KEY = "AIzaSyAw6uroj8KfoxYjVQaYKVa3zrzWmU2eHmY"
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent"
 const TESTS_DIR = path.join(__dirname, "tests")
 const TESTCASES_FOLDER = path.join(__dirname, "testcases")
@@ -53,11 +53,7 @@ function readTestcasesFromFolder() {
 }
 
 function loadTestcases() {
-  // Prefer folder of per-testcase JSONs
-  const folderCases = readTestcasesFromFolder()
-  if (folderCases.length > 0) return folderCases
-
-  // Fallback to combined file
+  // Prefer combined file
   const combined = readJSONSafe(TESTCASES_COMBINED)
   if (Array.isArray(combined) && combined.length > 0) {
     emit({
@@ -67,6 +63,10 @@ function loadTestcases() {
     })
     return combined
   }
+
+  // Fallback to folder of per-testcase JSONs
+  const folderCases = readTestcasesFromFolder()
+  if (folderCases.length > 0) return folderCases
 
   return []
 }
@@ -190,13 +190,13 @@ function applyLocalFix(code, errorMsg) {
 
   // Example: relax strict locators and add waits
   updated = updated.replace(
-    /await\s+page\.goto$$['"]([^'"]+)['"]$$\s*;?/g,
+    /await\s+page\.goto\(['"]([^'"]+)['"]\)\s*;?/g,
     `await page.goto('$1', { waitUntil: 'networkidle', timeout: 30000 });\nawait page.waitForTimeout(1500);`,
   )
 
   // Simple fix for common locator issues: try getByRole on buttons
   updated = updated.replace(
-    /page\.locator$$['"]([^'"]+)['"]$$\.click$$$$/g,
+    /page\.locator\(['"]([^'"]+)['"]\)\.click\(\)/g,
     `page.getByRole('button', { name: /$1/i }).first().click()`,
   )
 
@@ -225,7 +225,10 @@ function buildPrompt(tc) {
   lines.push("Return only a complete JavaScript test file for Playwright's @playwright/test runner.")
   lines.push("Constraints:")
   lines.push("- Use proper imports: import { test, expect } from '@playwright/test'")
-  lines.push("- Navigate to the start URL and follow the steps.")
+  lines.push("- Navigate EXACTLY to the Start URL provided using page.goto(StartURL). Do NOT change, modify, or use any other URL for navigation unless explicitly mentioned in the Steps or TestData.")
+  lines.push("- Use the exact TestData values provided. Do NOT invent, change, or use placeholder data; stick strictly to the given TestData.")
+  lines.push("- ALWAYS use the FIRST suggested locator from the mapping, dont use getbytestid first use the common locator mapping always used")
+  lines.push("- NEVER invent or guess locators - only use what's provided in the dynamic locators")
   lines.push("- Put realistic waits (waitForLoadState, small timeouts) where needed. Avoid arbitrary long waits.")
   lines.push("- Do not wrap your answer in Markdown fences.")
   lines.push("")
@@ -233,10 +236,10 @@ function buildPrompt(tc) {
   lines.push(`Description: ${tc.Description || "N/A"}`)
   lines.push(`StartURL: ${startUrl}`)
   lines.push("")
-  lines.push("TestData:")
+  lines.push("TestData (use these exact values in the script where applicable; do not change them):")
   for (const d of testData) lines.push(`- ${d}`)
   lines.push("")
-  lines.push("Steps:")
+  lines.push("Steps (follow these exactly; do not add or modify URLs or data):")
   for (const s of steps) lines.push(`- ${s?.Step || s?.Action || JSON.stringify(s)}`)
   lines.push("")
   lines.push("ExpectedResults:")
@@ -397,7 +400,9 @@ async function processTestCase(tc, index, total) {
         })
       } else if (attempt === 2) {
         const enhancedPrompt = [
-          "The following Playwright test failed. Fix it.",
+          "The following Playwright test failed. Fix it while adhering to these rules:",
+          "- Do NOT change, modify, or use any other URLs than those in the original code or error context.",
+          "- Preserve all original TestData and URLs exactly; only fix the error without altering data or navigation targets.",
           "Return only the corrected JavaScript file content for @playwright/test (no markdown fences).",
           "",
           "Existing failing code:",

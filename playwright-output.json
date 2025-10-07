@@ -51,14 +51,14 @@
   },
   "suites": [
     {
-      "title": "TC_LG_013.spec.js",
-      "file": "TC_LG_013.spec.js",
+      "title": "PS-LOGIN-001.spec.js",
+      "file": "PS-LOGIN-001.spec.js",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "TC_LG_013: Prevent access to authenticated pages after logout",
-          "ok": true,
+          "title": "PS-LOGIN-001: Validate that a registered customer can log in successfully using valid credentials.",
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -71,22 +71,62 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 12489,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 29183,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1')\nExpected string: \u001b[32m\"My account\"\u001b[39m\nReceived: <element(s) not found>\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    - waiting for\" https://practicesoftwaretesting.com/account\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://practicesoftwaretesting.com/account\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1')\nExpected string: \u001b[32m\"My account\"\u001b[39m\nReceived: <element(s) not found>\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    - waiting for\" https://practicesoftwaretesting.com/account\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://practicesoftwaretesting.com/account\"\u001b[22m\n\n    at D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\tests\\PS-LOGIN-001.spec.js:42:36",
+                    "location": {
+                      "file": "D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\tests\\PS-LOGIN-001.spec.js",
+                      "column": 36,
+                      "line": 42
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 40 |\u001b[39m\n \u001b[90m 41 |\u001b[39m   \u001b[90m// Then the system should authenticate the user and redirect to the user's account page\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'h1'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'My account'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveURL(startURL)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m\n \u001b[90m 45 |\u001b[39m   \u001b[90m// And a welcome message with user's name should be visible on the page\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\tests\\PS-LOGIN-001.spec.js",
+                        "column": 36,
+                        "line": 42
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h1')\nExpected string: \u001b[32m\"My account\"\u001b[39m\nReceived: <element(s) not found>\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    - waiting for\" https://practicesoftwaretesting.com/account\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://practicesoftwaretesting.com/account\"\u001b[22m\n\n\n  40 |\n  41 |   // Then the system should authenticate the user and redirect to the user's account page\n> 42 |   await expect(page.locator('h1')).toContainText('My account');\n     |                                    ^\n  43 |   await expect(page).not.toHaveURL(startURL);\n  44 |\n  45 |   // And a welcome message with user's name should be visible on the page\n    at D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\tests\\PS-LOGIN-001.spec.js:42:36"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-06T09:54:22.765Z",
+                  "startTime": "2025-10-07T15:51:03.101Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\test-results\\PS-LOGIN-001-PS-LOGIN-001--2115f-ly-using-valid-credentials--chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\test-results\\PS-LOGIN-001-PS-LOGIN-001--2115f-ly-using-valid-credentials--chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\test-results\\PS-LOGIN-001-PS-LOGIN-001--2115f-ly-using-valid-credentials--chromium\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\DELOITTE INDIA\\GenAI_JPMC\\PW_Fastapi\\tests\\PS-LOGIN-001.spec.js",
+                    "column": 36,
+                    "line": 42
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "0fecca931248943dd4c8-0a6234487226bd880a04",
-          "file": "TC_LG_013.spec.js",
+          "id": "b0de57d0a60805ada937-f190a2c4e978cfc26552",
+          "file": "PS-LOGIN-001.spec.js",
           "line": 3,
           "column": 5
         }
@@ -95,11 +135,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-10-06T09:54:21.622Z",
-    "duration": 14539.646,
-    "expected": 1,
+    "startTime": "2025-10-07T15:51:02.029Z",
+    "duration": 31653.665999999997,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

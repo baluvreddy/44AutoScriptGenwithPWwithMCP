@@ -1,439 +1,370 @@
 [
     {
-        "TestCaseID": "TC_LG_001",
-        "Title": "",
-        "Description": "TC_LG_001",
-        "Prerequisite": "Launch the application URL.",
+        "TestCaseID": "PS-REG-001",
+        "Title": "Verify Customer Registration with Valid Details",
+        "Description": "Validate that a new customer can register successfully using all mandatory details.",
+        "Prerequisite": "",
         "Steps": [
             {
                 "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
+                "Action": "Given the user navigates to the registration page",
+                "ExpectedResult": "",
+                "TestData": []
             },
             {
                 "StepNo": 2,
-                "Action": "Enter a valid username.",
-                "ExpectedResult": "The username 'Admin' is entered in the field.",
+                "Action": "When the user enters 'John' in the First name field",
+                "ExpectedResult": "",
                 "TestData": [
-                    "username: Admin"
+                    "first name: John"
                 ]
             },
             {
                 "StepNo": 3,
-                "Action": "Enter a valid password.",
-                "ExpectedResult": "The password characters are masked.",
+                "Action": "And enters 'Doe' in the Last name field",
+                "ExpectedResult": "",
                 "TestData": [
-                    "password: admin123"
+                    "last name: Doe"
                 ]
             },
             {
                 "StepNo": 4,
-                "Action": "Click on the \"Login\" button.",
-                "ExpectedResult": "The user is successfully authenticated and redirected to the main Dashboard page.",
+                "Action": "And enters valid date in the Date of Birth field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "date of birth: 1990-05-14"
+                ]
+            },
+            {
+                "StepNo": 5,
+                "Action": "And enters the street address in the Street field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "street: 123 Maple Avenue"
+                ]
+            },
+            {
+                "StepNo": 6,
+                "Action": "And enters postal code in the Postal code field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "postal code: 560001"
+                ]
+            },
+            {
+                "StepNo": 7,
+                "Action": "And enters city in the City field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "city: Bangalore"
+                ]
+            },
+            {
+                "StepNo": 8,
+                "Action": "And enters state in the State field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "state: Karnataka"
+                ]
+            },
+            {
+                "StepNo": 9,
+                "Action": "And selects a valid country from the Country dropdown",
+                "ExpectedResult": "",
+                "TestData": [
+                    "country: India"
+                ]
+            },
+            {
+                "StepNo": 10,
+                "Action": "And enters valid phone number in the Phone field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "phone: 9876543210"
+                ]
+            },
+            {
+                "StepNo": 11,
+                "Action": "And enters a valid email address in the Email address field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "email: john.doe123@example.com"
+                ]
+            },
+            {
+                "StepNo": 12,
+                "Action": "And enters a valid password in the Password field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "password: Abcd@1234"
+                ]
+            },
+            {
+                "StepNo": 13,
+                "Action": "And clicks the Register button",
+                "ExpectedResult": "",
+                "TestData": [
+                    "button: Register"
+                ]
+            },
+            {
+                "StepNo": 14,
+                "Action": "Then the system should display a success message or redirect to the login page",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 15,
+                "Action": "And the user should be able to log in using the same credentials",
+                "ExpectedResult": "",
                 "TestData": []
             }
         ],
-        "Summary": "This test case verifies: tc_lg_001."
-    },
-    {
-        "TestCaseID": "TC_LG_002",
-        "Title": "",
-        "Description": "TC_LG_002",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter a valid username.",
-                "ExpectedResult": "The username 'Admin' is entered in the field.",
-                "TestData": [
-                    "username: Admin"
-                ]
-            },
-            {
-                "StepNo": 3,
-                "Action": "Enter an invalid password.",
-                "ExpectedResult": "The password characters are masked.",
-                "TestData": [
-                    "password: invalidpass"
-                ]
-            },
-            {
-                "StepNo": 4,
-                "Action": "Click on the \"Login\" button.",
-                "ExpectedResult": "An error message \"Invalid credentials\" is displayed.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_002."
-    },
-    {
-        "TestCaseID": "TC_LG_003",
-        "Title": "",
-        "Description": "TC_LG_003",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter an invalid username.",
-                "ExpectedResult": "The username is entered in the field.",
-                "TestData": [
-                    "username: NonExistentUser"
-                ]
-            },
-            {
-                "StepNo": 3,
-                "Action": "Enter a valid password.",
-                "ExpectedResult": "The password characters are masked.",
-                "TestData": [
-                    "password: admin123"
-                ]
-            },
-            {
-                "StepNo": 4,
-                "Action": "Click on the \"Login\" button.",
-                "ExpectedResult": "An error message \"Invalid credentials\" is displayed.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_003."
-    },
-    {
-        "TestCaseID": "TC_LG_004",
-        "Title": "",
-        "Description": "TC_LG_004",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Click on the \"Login\" button.",
-                "ExpectedResult": "A validation message \"Required\" appears below both the username and password fields.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_004."
-    },
-    {
-        "TestCaseID": "TC_LG_005",
-        "Title": "",
-        "Description": "TC_LG_005",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter a valid username.",
-                "ExpectedResult": "The username 'Admin' is entered in the field.",
-                "TestData": [
-                    "username: Admin"
-                ]
-            },
-            {
-                "StepNo": 3,
-                "Action": "Click on the \"Login\" button.",
-                "ExpectedResult": "A validation message \"Required\" appears below the password field.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_005."
-    },
-    {
-        "TestCaseID": "TC_LG_006",
-        "Title": "",
-        "Description": "TC_LG_006",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter username in a different case.",
-                "ExpectedResult": "The username 'admin' is entered.",
-                "TestData": [
-                    "username: admin"
-                ]
-            },
-            {
-                "StepNo": 3,
-                "Action": "Enter a valid password.",
-                "ExpectedResult": "The password characters are masked.",
-                "TestData": [
-                    "password: admin123"
-                ]
-            },
-            {
-                "StepNo": 4,
-                "Action": "Click on the \"Login\" button.",
-                "ExpectedResult": "An error message \"Invalid credentials\" is displayed.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_006."
-    },
-    {
-        "TestCaseID": "TC_LG_007",
-        "Title": "",
-        "Description": "TC_LG_007",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter a valid username.",
-                "ExpectedResult": "The username 'Admin' is entered.",
-                "TestData": [
-                    "username: Admin"
-                ]
-            },
-            {
-                "StepNo": 3,
-                "Action": "Enter password in a different case.",
-                "ExpectedResult": "The password characters are masked.",
-                "TestData": [
-                    "password: ADMIN123"
-                ]
-            },
-            {
-                "StepNo": 4,
-                "Action": "Click on the \"Login\" button.",
-                "ExpectedResult": "An error message \"Invalid credentials\" is displayed.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_007."
-    },
-    {
-        "TestCaseID": "TC_LG_008",
-        "Title": "",
-        "Description": "TC_LG_008",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Click on the \"Forgot your password?\" link.",
-                "ExpectedResult": "The user is redirected to the \"Reset Password\" page.",
-                "TestData": []
-            },
-            {
-                "StepNo": 3,
-                "Action": "Verify the presence of the username input field on the new page.",
-                "ExpectedResult": "The \"Reset Password\" page contains a field to enter the username.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_008."
-    },
-    {
-        "TestCaseID": "TC_LG_009",
-        "Title": "",
-        "Description": "TC_LG_009",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Inspect the page for all required elements.",
-                "ExpectedResult": "Page contains: Logo, Username field, Password field, Login button, and \"Forgot your password?\" link.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_009."
-    },
-    {
-        "TestCaseID": "TC_LG_010",
-        "Title": "",
-        "Description": "TC_LG_010",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter text into the password field.",
-                "ExpectedResult": "The text entered is obscured by mask characters (e.g., â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢).",
-                "TestData": [
-                    "password: testmasking"
-                ]
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_010."
-    },
-    {
-        "TestCaseID": "TC_LG_011",
-        "Title": "",
-        "Description": "TC_LG_011",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter a valid username.",
-                "ExpectedResult": "The username 'Admin' is entered in the field.",
-                "TestData": [
-                    "username: Admin"
-                ]
-            },
-            {
-                "StepNo": 3,
-                "Action": "Enter a valid password.",
-                "ExpectedResult": "The password field is populated.",
-                "TestData": [
-                    "password: admin123"
-                ]
-            },
-            {
-                "StepNo": 4,
-                "Action": "Press the 'Enter' key on the keyboard.",
-                "ExpectedResult": "The user is successfully authenticated and redirected to the main Dashboard page.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_011."
-    },
-    {
-        "TestCaseID": "TC_LG_012",
-        "Title": "",
-        "Description": "TC_LG_012",
-        "Prerequisite": "Launch the application URL.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Launch the application URL.",
-                "ExpectedResult": "The OrangeHRM login page is displayed.",
-                "TestData": [
-                    "URL"
-                ]
-            },
-            {
-                "StepNo": 2,
-                "Action": "Enter a basic SQL injection string in the username field.",
-                "ExpectedResult": "The string is entered in the field.",
-                "TestData": [
-                    "username: ' OR '1'='1"
-                ]
-            },
-            {
-                "StepNo": 3,
-                "Action": "Enter any password.",
-                "ExpectedResult": "The password characters are masked.",
-                "TestData": [
-                    "password: password"
-                ]
-            },
-            {
-                "StepNo": 4,
-                "Action": "Click on the \"Login\" button.",
-                "ExpectedResult": "Application shows \"Invalid credentials\" error and is not compromised.",
-                "TestData": []
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_012."
-    },
-    {
-        "TestCaseID": "TC_LG_013",
-        "Title": "",
-        "Description": "TC_LG_013",
-        "Prerequisite": "Perform a valid login.",
-        "Steps": [
-            {
-                "StepNo": 1,
-                "Action": "Perform a valid login.",
-                "ExpectedResult": "The user is logged in and on the Dashboard page.",
-                "TestData": []
-            },
-            {
-                "StepNo": 2,
-                "Action": "Log out of the application.",
-                "ExpectedResult": "The user is redirected to the login page.",
-                "TestData": []
-            },
-            {
-                "StepNo": 3,
-                "Action": "Use the browser's back button or manually enter the Dashboard URL.",
-                "ExpectedResult": "The application redirects the user back to the login page.",
-                "TestData": [
-                    "Dashboard URL"
-                ]
-            }
-        ],
-        "Summary": "This test case verifies: tc_lg_013.",
+        "Summary": "This test case verifies: validate that a new customer can register successfully using all mandatory details..",
         "TestData": [
-            "user: Admin",
-            "pass: admin123"
+            "url: https://practicesoftwaretesting.com/auth/register",
+            "expected: Registration successful"
+        ]
+    },
+    {
+        "TestCaseID": "PS-LOGIN-001",
+        "Title": "Verify Customer Login with Valid Credentials",
+        "Description": "Validate that a registered customer can log in successfully using valid credentials.",
+        "Prerequisite": "PS-REG-001",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Given the user navigates to the login page",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 2,
+                "Action": "When the user enters the registered email address in the Email field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "email: john.doe123@example.com"
+                ]
+            },
+            {
+                "StepNo": 3,
+                "Action": "And enters the valid password in the Password field",
+                "ExpectedResult": "",
+                "TestData": [
+                    "password: Abcd@1234"
+                ]
+            },
+            {
+                "StepNo": 4,
+                "Action": "And clicks the Login button",
+                "ExpectedResult": "",
+                "TestData": [
+                    "button: Login"
+                ]
+            },
+            {
+                "StepNo": 5,
+                "Action": "Then the system should authenticate the user and redirect to the homepage or dashboard",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 6,
+                "Action": "And a welcome message with user's name should be visible on the homepage",
+                "ExpectedResult": "",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: validate that a registered customer can log in successfully using valid credentials..",
+        "TestData": [
+            "url: https://practicesoftwaretesting.com/auth/login",
+            "expected: Login successful",
+            "homepage displayed",
+            "expected: Welcome John message displayed"
+        ]
+    },
+    {
+        "TestCaseID": "PS-CART-001",
+        "Title": "Verify Adding Multiple Items to Cart and Checkout",
+        "Description": "Validate that a logged-in customer can add multiple items (Combination Pliers and Pliers) to the cart and verify them during checkout.",
+        "Prerequisite": "PS-LOGIN-001",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Given the user is on the dashboard page after successful login",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 2,
+                "Action": "When the user clicks on the 'Combination Pliers' product card",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 3,
+                "Action": "And clicks the 'Add to Cart' button for the Combination Pliers product",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 4,
+                "Action": "Then the system should confirm that the Combination Pliers item is added to the cart",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 5,
+                "Action": "When the user navigates back to the dashboard/home page",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 6,
+                "Action": "And clicks on the 'Pliers' product card",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 7,
+                "Action": "And clicks the 'Add to Cart' button for the Pliers product",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 8,
+                "Action": "Then the system should confirm that the Pliers item is added to the cart",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 9,
+                "Action": "When the user clicks on the Cart icon or navigates to the Checkout page",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 10,
+                "Action": "Then both 'Combination Pliers' and 'Pliers' should be visible in the cart summary",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 11,
+                "Action": "And the user should be able to proceed with checkout or payment",
+                "ExpectedResult": "",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: validate that a logged-in customer can add multiple items (combination pliers and pliers) to the cart and verify them during checkout..",
+        "TestData": [
+            "url: https://practicesoftwaretesting.com/",
+            "product name: Combination Pliers",
+            "action: Add to Cart",
+            "expected: Confirmation message 'Item added to cart'",
+            "action: Click on Home/Dashboard",
+            "product name: Pliers",
+            "url: https://practicesoftwaretesting.com/checkout",
+            "expected: Both items listed with correct quantity and price",
+            "expected: Proceed to payment or confirm order button available"
+        ]
+    },
+    {
+        "TestCaseID": "PS-CART-002",
+        "Title": "Verify Search and Purchase Flow for “M4 Nuts”",
+        "Description": "Validate that a logged-in customer can search for “M4 Nuts”, view its details, add it to the cart, and proceed to checkout.",
+        "Prerequisite": "PS-LOGIN-001",
+        "Steps": [
+            {
+                "StepNo": 1,
+                "Action": "Given the user is on the dashboard page after successful login",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 2,
+                "Action": "When the user types “M4 Nuts” in the search bar",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 3,
+                "Action": "And presses Enter or clicks the search icon",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 4,
+                "Action": "Then the system should display search results containing the “M4 Nuts” product",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 5,
+                "Action": "When the user clicks on the “M4 Nuts” product tab or card",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 6,
+                "Action": "Then the product details page should open",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 7,
+                "Action": "When the user clicks the “Add to Cart” button on the product page",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 8,
+                "Action": "Then the system should confirm that “M4 Nuts” has been added to the cart",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 9,
+                "Action": "When the user navigates to the Cart page",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 10,
+                "Action": "Then the cart should display the “M4 Nuts” product with correct details",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 11,
+                "Action": "When the user clicks on the “Proceed to Checkout” button",
+                "ExpectedResult": "",
+                "TestData": []
+            },
+            {
+                "StepNo": 12,
+                "Action": "Then the system should redirect to the checkout page showing the “M4 Nuts” item in order summary",
+                "ExpectedResult": "",
+                "TestData": []
+            }
+        ],
+        "Summary": "This test case verifies: validate that a logged-in customer can search for “m4 nuts”, view its details, add it to the cart, and proceed to checkout..",
+        "TestData": [
+            "url: https://practicesoftwaretesting.com/",
+            "search query: M4 Nuts",
+            "action: Perform search",
+            "expected: “M4 Nuts” product appears in search results",
+            "product name: M4 Nuts",
+            "expected: Product title",
+            "image",
+            "price",
+            "and “Add to Cart” button visible",
+            "action: Add to Cart",
+            "expected: Confirmation message “Item added to cart”",
+            "action: Click on Cart icon / Cart page",
+            "expected: “M4 Nuts” displayed with correct price and quantity",
+            "action: Proceed to Checkout",
+            "expected: Checkout page with “M4 Nuts” listed"
         ]
     }
 ]
